@@ -1,6 +1,6 @@
 {
-    "name": "imediatis/mvc-skeleton",
-    "description": "Back office Light",
+    "name": "imediatis/backoffice.light",
+    "description": "Gestionnaire du backoffice de Light",
     "type": "project",
     "authors": [{
         "name": "Sylvin KAMDEM",
@@ -10,8 +10,7 @@
         "slim/slim": "^3.0",
         "phpmailer/phpmailer": "^6.0",
         "doctrine/orm": "2.5",
-        "slim/twig-view": "^2.4",
-        "imediatis/entity-annotation":"1.0"
+        "slim/twig-view": "^2.4"
     },
     "config": {
         "optimize-autoloader": true
