@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string en_name="english" en="English" fr_name="francais" fr="Français"/>
+  <string en_name="home" en="Home" fr_name="accueil" fr="Accueil"/>
+  <string en_name="all-rights-reserved-" en="All Rights Reserved." fr_name="tous-droits-reserves-" fr="Tous droits réservés."/>
+  <string en_name="made-by" en="Made by" fr_name="realise-par" fr="Réalisé par"/>
+  <string en_name="contact-us" en="Contact us" fr_name="nous-contacter" fr="Nous contacter"/>
+  <string en_name="send-address" en="Sending e-mail address" fr_name="adresse-envoi" fr="Adresse e-mail d'envoi"/>
+  <string en_name="html-file" en="HTML file" fr_name="fichier-html" fr="Fichier HTML"/>
+  <string en_name="participated-email" en="Participating e-mail addresses (Separated by ;)" fr_name="email-participantes" fr="Adresses e-mails participantes (Séparé par des ; )"/>
+  <string en_name="mass-email" en="Mass emailing" fr_name="email-de-masse" fr="Envoi massif d'emails"/>
+  <string en_name="required-fields" en="Required fields" fr_name="champs-obligatoires" fr="Champs obligatoires"/>
+  <string en_name="run-your-campaign" en="Run your campaign" fr_name="executez-votre-campagne" fr="Exécutez votre campagne"/>
+  <string en_name="api-key" en="Your key" fr_name="votre-cle" fr="Votre clé"/>
+  <string en_name="company-name" en="Company name" fr_name="raison-sociale" fr="Raison sociale"/>
+  <string en_name="email-object" en="Subject of the email" fr_name="objet-email" fr="Objet de l'e-mail"/>
+  <string en_name="query-result" en="Result of the query" fr_name="resultat-requete" fr="Résultat de la requête"/>
+  <string en_name="send-personalized-and-sim" en="Send personalized and simple newsletters" fr_name="envoyer-des-newsletters-p" fr="Envoyer des newsletters personnalisées et simplement"/>
+  <string en_name="password" en="Password" fr_name="mot-de-passe" fr="Mot de passe"/>
+  <string en_name="username" en="Username" fr_name="nom-d-utilisateur" fr="Nom d'utilisateur"/>
+  <string en_name="or" en="or" fr_name="ou" fr="ou"/>
+  <string en_name="login" en="login" fr_name="connexion" fr="connexion"/>
+  <string en_name="login-n" en="login" fr_name="Login" fr="Login"/>
+  <string en_name="login-with" en="Login with" fr_name="se-connecter-avec" fr="Se connecter avec"/>
+  <string en_name="signup" en="Signup" fr_name="abonnement" fr="Abonnement"/>
+  <string en_name="create-an-account-for-fre" en="Create an account for free. No commitment.  No hidden costs." fr_name="creez-un-compte-gratuitem" fr="Créez un compte gratuitement. Pas d'engagement. Pas de frais cachés."/>
+  <string en_name="your-name" en="Your name" fr_name="votre-nom-et-prenom" fr="Votre nom et prénom"/>
+  <string en_name="your-email" en="Your email" fr_name="votre-adresse-email" fr="Votre adresse email"/>
+  <string en_name="i-accept" en="I accept" fr_name="j-accepte" fr="J'accepte"/>
+  <string en_name="the-terms-and-conditions" en="the Terms and Conditions" fr_name="les-termes-et-conditions" fr="les Termes et Conditions"/>
+  <string en_name="subscribe-to-our-newslett" en="Subscribe to our newsletter" fr_name="abonnez-vous-a-notre-news" fr="Abonnez-vous à notre newsletter"/>
+  <string en_name="apply-for-a-subscription" en="Apply for a subscription" fr_name="demande-d-abonnement" fr="Demande d'abonnement"/>
+  <string en_name="campaign" en="Campaign" fr_name="campagne" fr="Campagne"/>
+  <string en_name="statistics" en="Statistics" fr_name="statistics" fr="Statistiques"/>
+  <string en_name="new-campaign" en="New campaign" fr_name="nouvelle-campagne" fr="Nouvelle campagne"/>
+  <string en_name="relaunch-a-campaign" en="Relaunch a campaign" fr_name="relancer-une-campagne" fr="Relancer une campagne"/>
+  <string en_name="click-here" en="Click here" fr_name="cliquez-ici" fr="Cliquez ici"/>
+  <string en_name="create-a-new-e-mail-campa" en="Create a new e-mail campaign" fr_name="creer-une-nouvelle-campag" fr="Créer une nouvelle campagne e-mails"/>
+  <string en_name="resume-a-campaign-already" en="Resume a campaign already executed" fr_name="reprendre-une-campagne-de" fr="Reprendre une campagne exécutée"/>
+  <string en_name="campaign-name" en="Campaign name" fr_name="nom-de-la-campagne" fr="Nom de la campagne"/>
+  <string en_name="enter-a-name-for-the-camp" en="Enter a name for the campaign" fr_name="entrer-un-nom-pour-la-cam" fr="Entrer un nom pour la campagne"/>
+  <string en_name="select-a-visualhtmlfor-yo" en="Select a visual (HTML) for your campaign" fr_name="selectionner-un-visuelhtm" fr="Sélectionner un visuel (HTML) pour votre campagne"/>
+  <string en_name="import-a-visualhtmlfor-yo" en="Import a visual (HTML) for your campaign" fr_name="importer-un-visuelhtmlpou" fr="Importer un visuel (HTML) pour votre campagne"/>
+  <string en_name="browse" en="Browse" fr_name="parcourir" fr="Parcourir"/>
+  <string en_name="next" en="Next" fr_name="suivant" fr="Suivant"/>
+  <string en_name="visual-overview" en="Visual overview" fr_name="aper-u-du-visuel" fr="Aperçu du visuel"/>
+  <string en_name="logout" en="logout" fr_name="deconnexion" fr="Déconnexion"/>
+  <string en_name="operating-license-granted" en="Operating license granted to" fr_name="licence-d-exploitation-ac" fr="Licence d'exploitation accordée à"/>
+  <string en_name="see-template" en="see template" fr_name="voir-modele" fr="voir modèle"/>
+  <string en_name="sender-s-name" en="Sender's name" fr_name="nom-de-l-expediteur" fr="Nom de l'expéditeur"/>
+  <string en_name="email-address-that-sends-" en="Email address that sends the campaign" fr_name="adresse-email-qui-envoi-l" fr="Adresse email qui envoi la campagne"/>
+  <string en_name="new-campaign-suite" en="New campaign suite" fr_name="nouvelle-campagne-suite" fr="Nouvelle campagne suite"/>
+  <string en_name="message-subject" en="Message subject" fr_name="sujet-de-votre-message" fr="Sujet de votre message"/>
+  <string en_name="ignore-companies-in-my-in" en="Ignore companies in my industry" fr_name="ignorer-les-entreprises-d" fr="Ignorer les entreprises de mon secteur d'activité"/>
+  <string en_name="put-my-address-in-copy-of" en="Put my address in copy of each e-mail delivered" fr_name="mettre-mon-adresse-en-cop" fr="Mettre mon adresse en copie de chaque e-mail délivré"/>
+  <string en_name="reply-email-addressoption" en="Reply email address (Optional)" fr_name="adresse-e-mail-de-reponse" fr="Adresse e-mail de réponse (Facultatif)"/>
+  <string en_name="add-an-attachmentoptional" en="Add an attachment(s) (Optional)" fr_name="ajouter-une-piece-jointef" fr="Ajouter pièce(s) jointe(s) (Facultatif)"/>
+  <string en_name="add-email-addresses-to-co" en="Add email addresses to complete the list (Optional)" fr_name="ajouter-des-adresses-e-ma" fr="Ajouter des adresses e-mails pour compléter la liste (Facultatif)"/>
+  <string en_name="it-is-important-to-separa" en="It is important to separate e-mails by semicolons (;)" fr_name="il-est-important-de-separ" fr="Il est important de séparer les e-mails par des points-virgules (;)"/>
+  <string en_name="previous" en="Previous" fr_name="precedent" fr="Précédent"/>
+  <string en_name="send-me-a-test-e-mail" en="Send me a test e-mail" fr_name="m-envoyer-un-mail-test" fr="M'envoyer un mail test"/>
+  <string en_name="start-my-campaign" en="Start my campaign" fr_name="lancer-ma-campagne" fr="Lancer ma campagne"/>
+  <string en_name="some-final-adjustments" en="Some final adjustments" fr_name="quelques-derniers-reglage" fr="Quelques derniers réglages"/>
+  <string en_name="campaign-final-stage" en="Campaign final stage" fr_name="derniere-etape-de-la-camp" fr="Dernière étape de la campagne"/>
+  <string en_name="campaign-summary" en="Campaign summary" fr_name="synthese-de-la-campagne" fr="Synthèse de la campagne"/>
+  <string en_name="enter-your-key" en="Enter your key" fr_name="entrer-votre-cle" fr="Entrer votre clé"/>
+  <string en_name="exclude-these-adresses" en="Exclude these adresses :" fr_name="exclure-les-adresses" fr="Exclure les adresses :"/>
+  <string en_name="campaign-repport" en="Campaign repport" fr_name="rapport-de-campagne" fr="Rapport de campagne"/>
+  <string en_name="subscribers-to-the-newsle" en="Subscribers to the newsletter" fr_name="les-abonnes-a-la-newslett" fr="Les abonnés à la newsletter"/>
+  <string en_name="active-subscription" en="Active subscription" fr_name="abonnement-actif" fr="Abonnement actif"/>
+  <string en_name="phone-number" en="Phone" fr_name="telephone" fr="Téléphone"/>
+  <string en_name="email" en="E-mail" fr_name="e-mail" fr="E-mail"/>
+  <string en_name="last-name" en="Last name" fr_name="nom" fr="Nom"/>
+  <string en_name="subscribe-on" en="Subscribe on" fr_name="souscrit-le" fr="Souscrit le"/>
+  <string en_name="user-exist" en="A user with a similar login already exists" fr_name="un-utilisateur-au-login-s" fr="Un utilisateur au login similaire existe déjà"/>
+  <string en_name="data-unavailable" en="Unable to update; data unavailable." fr_name="impossible-de-faire-la-mi" fr="Impossible de faire la mise à jour données introuvable"/>
+  <string en_name="data-exist" en="A similar record already exist" fr_name="un-enregistrement-similai" fr="Un enregistrement similaire existe déjà"/>
+  <string en_name="unable-to-delete" en="Unable to delete this data; it is being used by other ressources" fr_name="impossible-de-supprimer-c" fr="Impossible de supprimer cette information car utilisé par d'autres ressources"/>
+  <string en_name="identifier-can-not-be-nul" en="Identifier can not be null!" fr_name="l-identifiant-ne-peut-etr" fr="L'identifiant ne peut être null!"/>
+  <string en_name="unable-to-delete-this-ite" en="Unable to delete this item : it doe's not exist" fr_name="impossible-de-supprimer-c" fr="Impossible de supprimer cet elément : inexistant"/>
+  <string en_name="user-s-profile" en="User's profile" fr_name="les-profiles-utilisateur" fr="Les profiles utilisateur"/>
+  <string en_name="date" en="Date" fr_name="date" fr="Date"/>
+  <string en_name="code" en="Code" fr_name="code" fr="Code"/>
+  <string en_name="description" en="Description" fr_name="description" fr="Description"/>
+  <string en_name="active" en="Active" fr_name="actif" fr="Actif"/>
+  <string en_name="active-" en="Active" fr_name="active" fr="Active"/>
+  <string en_name="new" en="New" fr_name="nouveau" fr="Nouveau"/>
+  <string en_name="save" en="Save" fr_name="enregistrer" fr="Enregistrer"/>
+  <string en_name="an-error-occured" en="An error occured! " fr_name="une-erreur-est-survenu" fr="Une erreur est survenu! "/>
+  <string en_name="operation-success" en="Operation success!" fr_name="operation-realisee-avec-s" fr="Opération réalisée avec succès!"/>
+  <string en_name="go-back" en="Go back" fr_name="retour" fr="Retour"/>
+  <string en_name="user-profile-is-not-set-" en="User profile is not set." fr_name="veuillez-definir-le-profi" fr="Veuillez définir le profile de cet utilisateur."/>
+  <string en_name="unable-to-update-informat" en="Unable to update informations" fr_name="impossible-de-mettre-a-jo" fr="Impossible de mettre à jour les informations"/>
+  <string en_name="users" en="Users" fr_name="utilisateurs" fr="Les Utilisateurs"/>
+  <string en_name="status" en="Status" fr_name="statut" fr="Statut"/>
+  <string en_name="names" en="Names" fr_name="nom-et-prenom" fr="Nom et prénom"/>
+  <string en_name="function" en="Function" fr_name="fonction" fr="Fonction"/>
+  <string en_name="last-login" en="Last login" fr_name="derniere-connexion" fr="Dernière connexion"/>
+  <string en_name="from" en="From" fr_name="source" fr="Source"/>
+  <string en_name="new-user" en="New user" fr_name="nouvel-utilisateur" fr="Nouvel utilisateur"/>
+  <string en_name="profile" en="Profile" fr_name="profile" fr="Profile"/>
+  <string en_name="select-" en="Select..." fr_name="selectionner-" fr="Sélectionner..."/>
+  <string en_name="first-name" en="First name" fr_name="prenom" fr="Prénom"/>
+  <string en_name="account-created" en="Account created" fr_name="compte-cree" fr="Compte crée"/>
+  <string en_name="and-e-mail-with-your-cred" en="And e-mail with your credentials is been send to you." fr_name="et-un-e-mail-avec-vos-ide" fr="Et un e-mail avec vos identifiants vous a été envoyé."/>
+  <string en_name="user-name-or-password-inc" en="User name or password incorect" fr_name="nom-d-utilisateur-ou-mot-" fr="Nom d'utilisateur ou mot de passe incorect"/>
+  <string en_name="categories" en="Categories" fr_name="les-categories" fr="Les catégories"/>
+  <string en_name="actualities" en="Actualities" fr_name="les-actualites" fr="Les Actualités"/>
+  <string en_name="language" en="Language" fr_name="langue" fr="Langue"/>
+  <string en_name="title" en="Title" fr_name="titre" fr="Titre"/>
+  <string en_name="in-flash" en="In Flash" fr_name="in-flash" fr="In Flash"/>
+  <string en_name="author" en="Author" fr_name="auteur" fr="Auteur"/>
+  <string en_name="new-actuality" en="New actuality" fr_name="nouvelle-actualite" fr="Nouvelle actualité"/>
+  <string en_name="category" en="Category" fr_name="categorie" fr="Catégorie"/>
+  <string en_name="show-in-flash-infos" en="Show in flash infos" fr_name="afficher-dans-les-flashs-" fr="Afficher dans les flashs infos"/>
+  <string en_name="subtitle" en="Subtitle" fr_name="sous-titre" fr="Sous-titre"/>
+  <string en_name="summary" en="Summary" fr_name="resume" fr="Résumé"/>
+  <string en_name="news-body" en="News body" fr_name="corps-de-l-actualite" fr="Corps de l'actualité"/>
+  <string en_name="tags" en="tags" fr_name="tags" fr="Tags"/>
+  <string en_name="import-thumbnail-image" en="Import thumbnail image" fr_name="importer-une-image-miniat" fr="Importer une image miniature"/>
+  <string en_name="import-main-image" en="Import main image" fr_name="importer-l-image-principa" fr="Importer l'image principale"/>
+  <string en_name="unable-to-upload-images-" en="Unable to upload images." fr_name="impossible-d-importer-les" fr="Impossible d'importer les images."/>
+  <string en_name="unable-to-update-this-inf" en="Unable to update this information!" fr_name="impossible-de-mettre-a-jo" fr="Impossible de mettre à jour cette informations!"/>
+  <string en_name="publish" en="Publish" fr_name="publier" fr="Publier"/>
+  <string en_name="update" en="Update" fr_name="modifier" fr="Modifier"/>
+  <string en_name="do-you-confirm-the-public" en="Do you confirm the publication of this article?" fr_name="vous-confirmez-la-publica" fr="Vous confirmez la publication de cet article?"/>
+  <string en_name="yes" en="Yes" fr_name="oui" fr="Oui"/>
+  <string en_name="cancel" en="Cancel" fr_name="annuler" fr="Annuler"/>
+  <string en_name="no-matching-records-found" en="No matching records found" fr_name="aucune-donnee-disponible" fr="Aucune donnée disponible"/>
+  <string en_name="to" en="to" fr_name="a" fr="à"/>
+  <string en_name="of" en="of" fr_name="sur" fr="sur"/>
+  <string en_name="show" en="show" fr_name="afficher" fr="Afficher"/>
+  <string en_name="search" en="Search" fr_name="chercher" fr="Chercher"/>
+  <string en_name="do-you-confirm-to-delete" en="Do you confirm to delete this record?" fr_name="vous-confirmez-la-suppres" fr="Vous confirmez la suppression de cet enregistrement?"/>
+  <string en_name="delete" en="Delete" fr_name="supprimer" fr="Supprimer"/>
+  <string en_name="published" en="Published" fr_name="publiee" fr="Publiée"/>
+  <string en_name="not-published" en="Not published" fr_name="non-publiee" fr="Non publiée"/>
+  <string en_name="overview" en="Overview" fr_name="aper-u" fr="Aperçu"/>
+  <string en_name="your-session-has-expiredp" en="Your session has expired; please refresh it!" fr_name="votre-session-a-expireeve" fr="Votre session a expirée; veuillez l'actualiser!"/>
+  <string en_name="view" en="View" fr_name="vue" fr="Vue"/>
+  <string en_name="activate-disable" en="Activate/Disable" fr_name="activer-desactiver" fr="Activer/Désactiver"/>
+  <string en_name="set-habilitations" en="Set habilitations" fr_name="definir-les-habilitaions" fr="Définir les habilitaions"/>
+  <string en_name="do-you-confirm-activation" en="Do you confirm activation/disactivation of this profil" fr_name="vous-confirmez-l-activati" fr="Vous confirmez l'activation/désactivation de ce profile"/>
+  <string en_name="disabled" en="Disabled" fr_name="inactif" fr="Inactif"/>
+  <string en_name="Chg pwd" en="Must change password" fr_name="Chg mdp" fr="Dois changer le mot de passe"/>
+  <string en_name="never-logged" en="Never logged" fr_name="jamais-connecte" fr="Jamais connecté"/>
+  <string en_name="logged" en="Logged" fr_name="connecte" fr="Connecté"/>
+  <string en_name="logged-out" en="Logged out" fr_name="deconnecte" fr="Déconnecté"/>
+  <string en_name="would-you-activate-this-u" en="Would you activate this user?" fr_name="voulez-vous-activer-cet-u" fr="Voulez-vous activer cet utilisateur?"/>
+  <string en_name="would-you-disable-this-us" en="Would you disable this user?" fr_name="voulez-vous-desactiver-ce" fr="Voulez-vous désactiver cet utilisateur?"/>
+  <string en_name="this-login-is-used" en="This login is used!" fr_name="ce-login-est-attribue-" fr="Ce login est attribué!"/>
+  <string en_name="logout-from-all-other-com" en="Logout from all other computer !" fr_name="me-deconnecter-de-tout-le" fr="Me déconnecter de tout les autres postes !"/>
+  <string en_name="update-user" en="Update user" fr_name="modifier-l-utilisateur" fr="Modifier l'utilisateur"/>
+  <string en_name="create-new-user" en="Create new user" fr_name="nouvel-utilisateur" fr="Nouvel utilisateur"/>
+  <string en_name="log-out" en="Log out" fr_name="deconnexion" fr="Déconnexion"/>
+  <string en_name="user-name" en="User name" fr_name="nom-d-utilisateur" fr="Nom d'utilisateur"/>
+  <string en_name="forgot-password" en="Forgot password?" fr_name="mot-de-passe-oublie-" fr="Mot de passe oublié?"/>
+  <string en_name="welcome-to" en="Welcome to" fr_name="bienvenue-a" fr="Bienvenue à"/>
+  <string en_name="login-in" en="Login in" fr_name="authentification" fr="Authentification"/>
+  <string en_name="role" en="Role" fr_name="habilitation" fr="Habilitation"/>
+  <string en_name="last-realisations" en="Last realisations" fr_name="courbe-des-dernieres-real" fr="Courbe des dernières réalisations"/>
+  <string en_name="profil-update" en="Profil update" fr_name="mise-a-jour-du-profile" fr="Mise à jour du profile"/>
+  <string en_name="new-profile" en="New profile" fr_name="nouveau-profile" fr="Nouveau profile"/>
+  <string en_name="change-your-password" en="Change your password" fr_name="changer-de-mot-de-passe" fr="Changer de mot de passe"/>
+  <string en_name="current-password" en="Current password" fr_name="mot-de-passe-actuel" fr="Mot de passe actuel"/>
+  <string en_name="confirm" en="Confirm" fr_name="confirmer" fr="Confirmer"/>
+  <string en_name="new-password" en="New password" fr_name="nouveau-mot-de-passe" fr="Nouveau mot de passe"/>
+  <string en_name="this-field-is-required" en="This field is required" fr_name="ce-champ-est-obligatoire" fr="Ce champ est obligatoire"/>
+  <string en_name="enter-the-same-value-as-t" en="Enter the same value as the new password" fr_name="entrez-la-meme-valeur-que" fr="Entrez la même valeur que le nouveau mot de passe"/>
+  <string en_name="password-must-be-at-least" en="Password must be at least {0} caracter(s)" fr_name="le-mot-de-passe-admet-au-" fr="Le mot de passe admet au moins {0} caractères(s)"/>
+  <string en_name="your-password-has-been-su" en="Your password has been succesfuly reset!" fr_name="votre-mot-de-passe-a-ete-" fr="Votre mot de passe a été bien changé!"/>
+  <string en_name="change-the-password" en="Change the password" fr_name="changer-le-mot-de-passe" fr="Changer le mot de passe"/>
+  <string en_name="confirm-password" en="Confirm password" fr_name="confirmer-le-mot-de-passe" fr="Confirmer le mot de passe"/>
+  <string en_name="change-password" en="Change password" fr_name="changer-le-mot-de-passe" fr="Changer le mot de passe"/>
+  <string en_name="change-my-password" en="Change my password" fr_name="changer-mon-mot-de-passe" fr="Changer mon mot de passe"/>
+  <string en_name="countries" en="Countries" fr_name="les-pays" fr="Les pays"/>
+  <string en_name="iso-code-2" en="ISO Code 2" fr_name="code-iso-2" fr="Code ISO 2"/>
+  <string en_name="iso-code-3" en="ISO Code 3" fr_name="code-iso-3" fr="Code ISO 3"/>
+  <string en_name="name" en="Name" fr_name="nom" fr="Nom"/>
+  <string en_name="dial-code" en="Dial code" fr_name="code-d-appel" fr="Code d'appel"/>
+  <string en_name="would-you-delete-this-ite" en="Would you delete this item" fr_name="voulez-vous-supprimer-cet" fr="Voulez-vous supprimer cet élément"/>
+  <string en_name="new-country" en="New country" fr_name="nouveau-pays" fr="Nouveau pays"/>
+  <string en_name="this-field-accept-at-leas" en="This field accept at least {0} caracter(s)" fr_name="ce-champ-admet-au-moins" fr="Ce champ admet au moins {0} caractères(s)"/>
+  <string en_name="regions" en="Regions" fr_name="regions" fr="Régions"/>
+  <string en_name="label" en="Label" fr_name="libelle" fr="Libellé"/>
+  <string en_name="country" en="Country" fr_name="pays" fr="Pays"/>
+  <string en_name="new-region" en="New region" fr_name="nouvelle-region" fr="Nouvelle région"/>
+  <string en_name="cities" en="Cities" fr_name="villes" fr="Villes"/>
+  <string en_name="city" en="City" fr_name="ville" fr="Ville"/>
+  <string en_name="region" en="Region" fr_name="region" fr="Région"/>
+  <string en_name="new-city" en="New city" fr_name="nouvelle-ville" fr="Nouvelle ville"/>
+  <string en_name="enterprises" en="Enterprises" fr_name="entreprises" fr="Entreprises"/>
+  <string en_name="details" en="Details" fr_name="details" fr="Détails"/>
+  <string en_name="reference" en="Reference" fr_name="reference" fr="Référence"/>
+  <string en_name="partners" en="Partners" fr_name="partenaires" fr="Partenaires"/>
+  <string en_name="domain-name" en="Domain name" fr_name="nom-de-domaine" fr="Nom de domaine"/>
+  <string en_name="address" en="Address" fr_name="adresse" fr="Adresse"/>
+  <string en_name="new-enterprise" en="New enterprise" fr_name="nouvelle-entreprise" fr="Nouvelle entreprise"/>
+  <string en_name="this-reference-is-already" en="This reference is already attributed" fr_name="cette-reference-est-deja-" fr="Cette référence est déjà attribuée"/>
+  <string en_name="this-domain-name-is-alrea" en="This domain name is already attributed" fr_name="ce-nom-de-domaine-est-dej" fr="Ce nom de domaine est déjà attribué"/>
+  <string en_name="created-on" en="Created on" fr_name="cree-le" fr="Crée le"/>
+  <string en_name="phone" en="Phone" fr_name="telephone" fr="Téléphone"/>
+  <string en_name="e-mail" en="E-mail" fr_name="e-mail" fr="E-mail"/>
+  <string en_name="invalid-e-mail-address" en="Invalid e-mail address" fr_name="adresse-mail-invalide" fr="Adresse mail invalide"/>
+  <string en_name="logout-this-user" en="Logout this user" fr_name="deconnecter-cet-utilisate" fr="Déconnecter cet utilisateur"/>
+  <string en_name="would-you-logout-this-use" en="Would you logout this user?" fr_name="voulez-vous-deconnecter-c" fr="Voulez-vous déconnecter cet utilisateur?"/>
+  <string en_name="branches" en="Branches" fr_name="agences" fr="Agences"/>
+  <string en_name="opened" en="Opened" fr_name="ouverte" fr="Ouverte"/>
+  <string en_name="closed" en="Closed" fr_name="fermee" fr="Fermée"/>
+  <string en_name="open" en="Open" fr_name="ouvrir" fr="Ouvrir"/>
+  <string en_name="close" en="Close" fr_name="fermer" fr="Fermer"/>
+  <string en_name="key" en="Key" fr_name="cle" fr="Clé"/>
+  <string en_name="enterprise" en="Enterprise" fr_name="entreprise" fr="Entreprise"/>
+  <string en_name="branch-name" en="Branch name" fr_name="nom-de-l-agence" fr="Nom de l'agence"/>
+  <string en_name="new-branch" en="New branch" fr_name="nouvelle-agence" fr="Nouvelle agence"/>
+  <string en_name="number-of-teller" en="Number of teller" fr_name="nombre-de-caisse" fr="Nombre de caisse"/>
+  <string en_name="tellers" en="Tellers" fr_name="caisses" fr="Caisses"/>
+  <string en_name="branch-code" en="Branch code" fr_name="code-agence" fr="Code agence"/>
+  <string en_name="update-branch" en="Update branch" fr_name="mise-a-jour-de-l-agence" fr="Mise à jour de l'agence"/>
+  <string en_name="nbboxes" en="Nb. Boxes" fr_name="nbcaisse" fr="Nb. Caisse"/>
+  <string en_name="teller" en="Teller" fr_name="caisse" fr="Caisse"/>
+  <string en_name="branch" en="Branch" fr_name="agence" fr="Agence"/>
+  <string en_name="branch-details" en="Branch details" fr_name="details-de-l-agence" fr="Détails de l'agence"/>
+  <string en_name="reset-key" en="Reset key" fr_name="regenerer-la-cle" fr="Regénérer la clé"/>
+  <string en_name="would-you-realy-reset-the" en="Would you realy reset the key of this branch?" fr_name="voulez-vous-effectivement" fr="Voulez-vous effectivement regénérer la clé de cette agence?"/>
+  <string en_name="would-you-reset-the-key-o" en="Would you reset the key of this box?" fr_name="voulez-vous-effectivement" fr="Voulez-vous effectivement regénérer la clé de cette caisse?"/>
+  <string en_name="teller-s-details" en="Teller's details" fr_name="details-de-la-caisse" fr="Détails de la caisse"/>
+  <string en_name="activities" en="Activities" fr_name="activites" fr="Activités"/>
+  <string en_name="can-not-open-thix-box-the" en="Can not open thix box : the branch is closed!" fr_name="impossible-d-ouvrir-cette" fr="Impossible d'ouvrir cette caisse : l'agence est fermé!"/>
+  <string en_name="can-not-open-this-box-the" en="Can not open this box : the branch is closed!" fr_name="impossible-d-ouvrir-cette" fr="Impossible d'ouvrir cette caisse : l'agence est fermé!"/>
+  <string en_name="can-not-close-this-branch" en="Can not close this branch : there are boxes still opened!" fr_name="impossible-de-fermer-cett" fr="Impossible de fermer cette agence : des caisses sont encore ouverte!"/>
+  <string en_name="sign-out" en="Sign out" fr_name="deconnecter" fr="Déconnecter"/>
+  <string en_name="reset-password" en="Reset password" fr_name="reinitialiser-le-mot-de-p" fr="Réinitialiser le mot de passe"/>
+  <string en_name="would-you-reset-this-user" en="Would you reset this user's password ?" fr_name="vous-voulez-reinitialiser" fr="Vous voulez réinitialiser le mot de passe de cet utilisateur ?"/>
+  <string en_name="inactive" en="Inactive" fr_name="inactif" fr="Inactif"/>
+  <string en_name="operator" en="Operator" fr_name="operateur" fr="Opérateur"/>
+  <string en_name="operators" en="Operators" fr_name="les-operateurs" fr="Les opérateurs"/>
+  <string en_name="create-new-operator" en="Create new operator" fr_name="nouvel-operateur" fr="Nouvel opérateur"/>
+  <string en_name="this-login-code-operator-" en="This login/Code operator is aleready assign" fr_name="ce-login-code-operateur-e" fr="Ce login/code opérateur est déjà attribué"/>
+  <string en_name="update-operator" en="Update operator" fr_name="mise-a-jour-de-l-operateu" fr="Mise à jour de l'opérateur"/>
+  <string en_name="do-you-want-to-reset-this" en="Do you want to reset this operator's password" fr_name="voulez-vous-reinitialiser" fr="Voulez-vous réinitialiser le mot de passe de cet opérateur"/>
+  <string en_name="assigning-an-operator-to-" en="Assigning an operator to a caisse" fr_name="affecter-un-operateur-a-u" fr="Affecter un opérateur à une caisse"/>
+  <string en_name="set-operator" en="Set operator" fr_name="affecter-un-operateur" fr="Affecter un opérateur"/>
+  <string en_name="associate" en="Associate" fr_name="affecter" fr="Affecter"/>
+  <string en_name="operator-assignment" en="Operator assignment" fr_name="affectation-d-operateur" fr="Affectation d'opérateur"/>
+  <string en_name="assignments" en="Assignments" fr_name="affectations" fr="Affectations"/>
+  <string en_name="structure" en="Structure" fr_name="structure" fr="Structure"/>
+  <string en_name="unsuffisant-parameters" en="Unsuffisant parameters" fr_name="parametres-insuffisants" fr="Paramètres insuffisants"/>
+  <string en_name="would-you-assign-the-oper" en="Would you assign the operator {0} to the box {1} off branch {2} off the enterprise {3}?" fr_name="voulez-vous-affecter-l-op" fr="Voulez-vous affecter l'opératuer {0} à la caisse {1} de l'agence {2} de l'entreprise {3}?"/>
+  <string en_name="please-select-the-caisse-" en="Please select the caisse and operator to be assigned! " fr_name="veuillez-selectionner-la-" fr="Veuillez sélectionner la caisse et l'opérateur à affecter !"/>
+  <string en_name="ip-address" en="IP Address" fr_name="adresse-ip" fr="Adresse IP"/>
+  <string en_name="an-error-occurred-during-" en="An error occurred during processing; please consult your logs." fr_name="une-erreur-s-est-produite" fr="Une erreur s'est produite lors du traitement; veuillez consulter votre journal."/>
+  <string en_name="max-amount" en="Max amount" fr_name="montant-max" fr="Montant max"/>
+  <string en_name="invalid-amount" en="Invalid amount" fr_name="montant-invalide" fr="Montant invalide"/>
+  <string en_name="activate" en="Activate" fr_name="activer" fr="Activer"/>
+  <string en_name="deactivate" en="Deactivate" fr_name="desactiver" fr="Désactiver"/>
+  <string en_name="deactivated" en="Deactivated" fr_name="desactivee" fr="Désactivée"/>
+  <string en_name="activated" en="Activated" fr_name="activee" fr="Activée"/>
+  <string en_name="invalid-grid-line-" en="Invalid grid line." fr_name="ligne-de-grille-invalide-" fr="Ligne de grille invalide."/>
+  <string en_name="management-of-tariff-grid" en="Management of tariff grids" fr_name="gestion-des-grilles-tarif" fr="Gestion des grilles tarifaires"/>
+  <string en_name="min" en="Min" fr_name="min" fr="Min"/>
+  <string en_name="max" en="Max" fr_name="max" fr="Max"/>
+  <string en_name="value" en="Value" fr_name="valeur" fr="Valeur"/>
+  <string en_name="company" en="Company" fr_name="enterprise" fr="Enterprise"/>
+  <string en_name="price-list" en="Price list" fr_name="tarifaire" fr="Tarifaire"/>
+  <string en_name="new-price" en="New price" fr_name="nouveau-tarif" fr="Nouveau tarif"/>
+  <string en_name="nature" en="Nature" fr_name="nature" fr="Nature"/>
+  <string en_name="fixe" en="Fixe" fr_name="fixe" fr="Fixe"/>
+  <string en_name="percentage" en="Percentage" fr_name="pourcentage" fr="Pourcentage"/>
+  <string en_name="the-minimum-value-for-thi" en="The minimum value for this field is {0}" fr_name="la-valeur-minimale-pour-c" fr="La valeur minimale pour ce champ est {0}"/>
+  <string en_name="partner-s-management" en="Partner's management" fr_name="gestion-des-partenaires" fr="Gestion des partenaires"/>
+  <string en_name="new-partner" en="New partner" fr_name="nouveau-partenaire" fr="Nouveau partenaire"/>
+  <string en_name="update-partner" en="Update partner" fr_name="mise-a-jour-du-partenaire" fr="Mise à jour du partenaire"/>
+  <string en_name="would-you" en="Would you" fr_name="voulez-vous" fr="Voulez-vous"/>
+  <string en_name="this-item" en="this item" fr_name="cet-element" fr="cet élément"/>
+  <string en_name="affectations" en="Affectations" fr_name="affectations" fr="Affectations"/>
+  <string en_name="new-affectation" en="New affectation" fr_name="nouvelle-affectation" fr="Nouvelle affectation"/>
+  <string en_name="partner" en="Partner" fr_name="partenaire" fr="Partenaire"/>
+  <string en_name="parameters" en="Parameters" fr_name="parametres" fr="Paramètres"/>
+  <string en_name="type-of-document" en="Type of document" fr_name="type-de-piece" fr="Type de pièce"/>
+  <string en_name="new-type-of-document" en="New type of document" fr_name="nouveau-type-de-piece" fr="Nouveau type de pièce"/>
+  <string en_name="update-type-of-document" en="update type of document" fr_name="mise-a-jour-du-type-de-pi" fr="Mise à jour du type de pièce"/>
+  <string en_name="this-field-accept-maximum" en="This field accept maximum {0} character(s)" fr_name="ce-champ-accepte" fr="Ce champ n'accepte pas plus de {0} caractère(s)"/>
+  <string en_name="this-field-accept-minimum" en="This field accept minimum {0} character(s)" fr_name="ce-champ-accepte" fr="Ce champ n'accepte pas moins de {0} caractère(s)"/>
+</resources>

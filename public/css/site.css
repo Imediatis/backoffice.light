@@ -1,0 +1,38 @@
+﻿label.error {
+    position: absolute;
+    bottom: -20px;
+    display: block;
+}
+
+.error-to-email {
+    border: 1px dotted #e81b1b !important;
+}
+
+.btn-quick {
+    padding: 3px 5px !important;
+}
+
+.action-user {
+    top: -85px !important;
+    left: -70px !important;
+}
+
+.table-responsive {
+    padding-bottom: 50px;
+}
+
+.btn-circle {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 9px !important;
+}
+
+.dropdown-menu>li>a.text-danger {
+    color: #ed5565;
+}
+
+.help-block {
+    color: #ed5565;
+    font-style: italic;
+    font-size: 12px;
+}

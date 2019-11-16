@@ -1,0 +1,104 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<style></style>
+{% endblock styles %} {% block content %}
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h5><i class="fa fa-flag m-r-sm"></i>{{LexiqueGetString('countries')}}</h5>
+        <div class="ibox-tools">
+            <a href="{{path_for('country.create')}}" class="btn btn-primary btn-quick"><i class="fa fa-plus m-r-xs"></i>{{LexiqueGetString('new')}}</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="countries">
+                <thead>
+                    <tr>
+                        <th>{{LexiqueGetString('iso-code-2')}}</th>
+                        <th>{{LexiqueGetString('iso-code-3')}}</th>
+                        <th>{{LexiqueGetString('name')}} (en)</th>
+                        <th>{{LexiqueGetString('name')}} (fr)</th>
+                        <th>{{LexiqueGetString('dial-code')}}</th>
+                        <th class="no-sort"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script type="text/javascript">
+    function deleteCountry(code) {
+        alertify.confirm('<h3>{{LexiqueGetString("would-you-delete-this-ite")}}</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('country.delete')}}",
+                data: {
+                    code: code,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#countries').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+    $(document).ready(function() {
+        var $table = $('#countries');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [0, "asc"]
+            ],
+            "columnDefs": [{
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "ajax": {
+                url: '{{path_for("country.dt")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                },
+                complete: function(e, settings, json, xhr) {
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

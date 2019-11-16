@@ -1,0 +1,146 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<style>
+    tr.group,
+    tr.group:hover {
+        background-color: #ddd !important;
+    }
+</style>
+{% endblock styles %} {% block content %}
+<div class="col-lg-offset-2 col-lg-8">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5><i class="fa fa-flag m-r-sm"></i>{{LexiqueGetString('management-of-tariff-grid')}}</h5>
+            <div class="ibox-tools">
+                <a href="{{path_for('tariffgrid.create')}}" class="btn btn-primary btn-quick"><i class="fa fa-plus m-r-xs"></i>{{LexiqueGetString('new')}}</a>
+            </div>
+        </div>
+        <div class="ibox-content">
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="tariffgrids">
+                    <thead>
+                        <tr>
+                            <th>{{LexiqueGetString('min')}}</th>
+                            <th>{{LexiqueGetString('max')}}</th>
+                            <th>{{LexiqueGetString('value')}}</th>
+                            <th>{{LexiqueGetString('company')}}</th>
+                            <th class="no-sort"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script type="text/javascript">
+    function deleteTariffGrid(id) {
+        alertify.confirm('<h3>{{LexiqueGetString("would-you-delete-this-ite")}}</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('tariffgrid.delete')}}",
+                data: {
+                    id: id,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message.stripSlashes());
+                        $('#tariffgrids').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        var groupColumn = 3;
+        var $table = $('#tariffgrids');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [groupColumn, 'asc'],
+                [0, "asc"]
+            ],
+            "columnDefs": [{
+                targets: groupColumn,
+                visible: false
+            }, {
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "displayLength": 50,
+            "drawCallback": function(settings) {
+                var api = this.api();
+                var rows = api.rows({
+                    page: 'current'
+                }).nodes();
+                var last = null;
+
+                api.column(groupColumn, {
+                    page: 'current'
+                }).data().each(function(group, i) {
+                    if (last !== group) {
+                        $(rows).eq(i).before(
+                            '<tr class="group"><td colspan="4">' + group + '</td></tr>'
+                        );
+                        last = group;
+                    }
+                });
+            },
+            "ajax": {
+                url: '{{path_for("tariffgrid.dt")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                },
+                complete: function(e, settings, json, xhr) {
+                    $("#tariffgrids tr td").addClass("text-right");
+                    $("#tariffgrids tr td:last-child").removeClass("text-right");
+                    $("#tariffgrids tr td:last-child").addClass("text-center");
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+
+        // Order by the grouping
+        $('#tariffgrids tbody').on('click', 'tr.group', function() {
+            var currentOrder = table.order()[0];
+            if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                table.order([groupColumn, 'desc']).draw();
+            } else {
+                table.order([groupColumn, 'asc']).draw();
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,95 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/switchery/switchery.css" />
+<style></style>
+{% endblock styles %} {% block content %}
+<div class="row animated fadeInRight">
+    <div class="form-group">
+        {{flashMsg()}}
+    </div>
+    <div class="col-lg-offset-3 col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>{{LexiqueGetString('teller-s-details')}} : <strong>{{Model.code}}</strong></h5>
+            </div>
+            <div>
+                <div class="ibox-content no-padding border-left-right">
+                    <img alt="image" class="img-responsive" src="{{ base_url()}}/img/avatars/company.jpg">
+                </div>
+                <div class="ibox-content profile-content">
+                    <form class="form-horizontal" action="{{path_for('box.pupdate')}}" method="post" name="box_update" id="box_update" enctype="multipart/form-data">
+                        {{ getCsrfInput() }}
+                        <input type="hidden" name="tb_box_id" id="tb_box_id" value="{{Model.id}}">
+
+                        <div class="form-group">
+                            {{flashMsg()}}
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <h4 data-toggle="tooltip" data-placement="top" title="{{LexiqueGetString('enterprise')}}"><a href="{{path_for('branch.details',{'code':Model.branch.code|base64_encode})}}"><i class="fa fa-institution"></i> : <strong>{{Model.branch.name}}</strong> ({{Model.branch.code}})</a></h4>
+                                </div>
+                                <div class="col-lg-2"><span class="label label-{{Model.branch.color}}">{{ LexiqueGetString(Model.branch.state)}}</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    {% if Model.operator %} {% set operator = Model.operator.firstName ~' '~ Model.operator.lastName~ ' (<em>'~Model.operator.login~'</em>)'|trim %} {% else %} {% set operator = '<i class="fa fa-ban text-danger"></i> no-operator'
+                                    %} {% endif %}
+                                    <h4 data-toggle="tooltip" data-placement="top" title="{{LexiqueGetString('operator')}}"><i class="fa fa-user"></i> : <strong>{{operator|raw}} </strong></h4>
+                                </div>
+                                <div class="col-lg-2"><span class="label label-{{Model.color}}">{{LexiqueGetString(Model.state)}}</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6 text-right"><label class="col-lg-12 form-label m-b-10 pull-right" for="tb_max_amount">{{LexiqueGetString('max-amount')}}<code>*</code></label></div>
+                                    <div class="col-lg-6">
+                                        <input id="tb_max_amount" name="tb_max_amount" class="form-control b-r-sm" type="number" maxlength="50" placeholder="{{LexiqueGetString('max-amount')}}" value="{{Model.maxAmount}}" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                        <span class="help-block m-b-none text-danger">{{modelErrors.tb_max_amount}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">Caisse : <label for="tb_box_active" id="statCaisse"> {% if Model.status>=1 %} {{LexiqueGetString('activated')}} {% else %} {{LexiqueGetString('deactivated')}} {% endif %}</label>
+                                    <input type="checkbox" class="js-switch" id="tb_box_active" name="tb_box_active" value="1" {% if Model.status %} checked {% endif %}>
+                                </div>
+                            </div>
+                            <p>
+                                <span data-toggle="tooltip" data-placement="top" title="{{LexiqueGetString('city')}}"><i class="fa fa-map g-mr-15"></i>{{Model.branch.city}}</span> <br>
+                                <span data-toggle="tooltip" data-placement="top" title="{{LexiqueGetString('address')}}"><i class="fa fa-map-marker g-mr-15"></i>{{Model.branch.address}}</span> <br>
+                                <span data-toggle="tooltip" data-placement="top" title="{{LexiqueGetString('phone')}}"><i class="fa fa-phone g-mr-15"></i><a href="tel:{{Model.branch.phone1}}">{{Model.branch.phone1}}</a>, <a href="tel:{{Model.branch.phone2}}">{{Model.branch.phone2}}</a></span><br>
+                                <span data-toggle="tooltip" data-placement="top" title="{{LexiqueGetString('email')}}"><i class="fa fa-envelope g-mr-15"></i><a href="mailto:{{Model.branch.email}}">{{Model.branch.email}}</a></span> <br>
+                            </p>
+                            <div class="user-button">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{goBack('box.read')}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-{{Model.rcolor}} btn-sm btn-block"><i class="fa fa-exchange"></i> {{LexiqueGetString('save')}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/switchery/switchery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var elem = document.querySelector('.js-switch');
+        var init = new Switchery(elem, {
+            size: "small"
+        });
+        $('.js-switch').change(function() {
+            if ($(this).is(":checked")) {
+                $("#statCaisse").html("{{LexiqueGetString('activated')}}");
+            } else {
+                $("#statCaisse").html("{{LexiqueGetString('deactivated')}}");
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

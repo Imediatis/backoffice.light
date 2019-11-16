@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:locale" content="{{CUR_LANG}}_{{CUR_LANG|upper}}" />
+    <meta property="og:type" content="WebApp" />
+    <meta property="og:title" content="Light Money web app" />
+    <meta property="og:description" content="Light, votre solution ultime pour l'administration de votre site web." />
+    <meta property="og:url" content="https://www.imediatis.net/" />
+    <meta property="og:site_name" content="La Solution d'échange financière" />
+    <meta property="og:image" content="{{ base_url() }}/ico/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ base_url() }}/ico/{{Reseller.icon}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="{{ base_url() }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ base_url() }}/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="{{ base_url() }}/css/animate.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/style.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/ime.master.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/alertifyjs/alertify.min.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/alertifyjs/themes/default.min.css" rel="stylesheet">
+    <title>{{appEnv.appName}}|{{title}} </title>
+
+</head>
+
+<body class="black-bg">
+
+    <div class="middle-box text-left loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">LG+</h1>
+
+            </div>
+            <h3>{{LexiqueGetString('welcome-to')}} {{appEnv.appName}}+</h3>
+            <p>{{LexiqueGetString('login-in')}}</p>
+            {{flashMsg()}}
+            <form class="m-t" role="form" action="{{path_for('login')}}" method="POST">
+                {{ getCsrfInput() }}
+
+                <div class="form-group {% if modelErrors.email %}has-error{% endif %}">
+                    <input type="email" name="email" class="form-control" placeholder="{{LexiqueGetString('user-name')}}" required="" value="{{Model.email}}" autocomplete="off"> {% if modelErrors.email %}<span class="help-block">{{modelErrors.email}}</span>                    {% endif %}
+                </div>
+                <div class="form-group {% if modelErrors.password %}has-error{% endif %}">
+                    <input type="password" name="password" class="form-control" placeholder="{{LexiqueGetString('password')}}" required="" value="{{Model.password}}" autocomplete="off"> {% if modelErrors.password %}<span class="help-block">{{modelErrors.password}}</span>                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary block
+                        full-width m-b">{{LexiqueGetString('login')}}</button>
+
+                <a href="#"><small>{{LexiqueGetString('forgot-password')}}</small></a>
+            </form>
+            {% if loFromOther %}
+            <form action="{{path_for('account.logout.force')}}" class="m-t" role="form" name="forceLogout" method="POST">
+                {{ getCsrfInput() }}
+                <input type="hidden" name="login" id="login" value="{{login}}" />
+                <button type="submit" class="btn btn-link block full-width m-b"><i class="fa fa-unlink m-r-sm g-font-size-20"></i><span class="text-danger">{{LexiqueGetString('logout-from-all-other-com')}}</span></button>
+            </form>
+            {% endif %}
+
+            <p class="m-t"> <small>{{appEnv.appName}}
+                    &copy;
+                    {{"now"|date("Y")}}</small>
+            </p>
+        </div>
+    </div>
+
+    <script src="{{ base_url() }}/js/jquery-3.1.1.min.js"></script>
+    <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+    <script src="{{ base_url() }}/js/alertify.min.js"></script>
+
+</body>
+
+</html>

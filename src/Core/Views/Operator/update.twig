@@ -1,0 +1,178 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<style></style>
+{% endblock styles %} {% block content %}
+<div class="row">
+    <div class="col-lg-offset-2 col-lg-7">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-user m-r-sm"></i>{{LexiqueGetString('update-operator')}}</h5>
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal" action="{{path_for('operator.pupdate')}}" method="post" name="update_operator" id="update_operator" enctype="multipart/form-data">
+                    {{ getCsrfInput() }}
+                    <input type="hidden" name="ope_id" id="ope_id" value="{{Model.id}}">
+
+                    <div class="form-group">
+                        {{flashMsg()}}
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="tb_ag_country">{{LexiqueGetString('country')}}</label>
+                            <div class="col-lg-12">
+                                <select id="tb_ag_country" name="tb_ag_country" class="form-control b-r-sm">
+                                    {{countries|raw}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="tb_cty_region">{{LexiqueGetString('region')}}</label>
+                            <div class="col-lg-12">
+                                <select id="tb_cty_region" name="tb_cty_region" class="form-control b-r-sm">
+                                    {{regions|raw}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="tb_ag_city">{{LexiqueGetString('city')}}</label>
+                            <div class="col-lg-12">
+                                <select id="tb_ag_city" name="tb_ag_city" class="form-control b-r-sm">
+                                    {{cities|raw}}
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.tb_ag_city}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="entrep_ope">{{LexiqueGetString('enterprise')}}<code>*</code></label>
+                            <div class="col-lg-12">
+                                <select id="entrep_ope" name="entrep_ope" class="form-control b-r-sm" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                    {{entreprises|raw}}
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.entrep_ope}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label for="profile_ope" class="col-lg-12 m-b-10">{{LexiqueGetString('profile')}}</label>
+                            <div class="col-lg-12">
+                                <select name="profile_ope" id="profile_ope" class="form-control b-r-sm" required>
+                                    <option value>{{LexiqueGetString('select-')}}</option>
+                                    {{profiles|raw}}
+
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.profile_ope}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 form-label m-b-10" for="login_ope">{{LexiqueGetString('login-n')}}<code>*</code></label>
+                            <div class="col-lg-12">
+                                <input id="login_ope" name="login_ope" class="form-control b-r-sm" type="text" maxlength="80" placeholder="{{LexiqueGetString('login-n')}}*" value="{{Model.login}}" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                <span class="help-block m-b-none text-danger">{{modelErrors.login_ope}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="fname_ope">{{LexiqueGetString('first-name')}}</label>
+                            <div class="col-lg-12">
+                                <input id="fname_ope" name="fname_ope" class="form-control b-r-sm" type="text" maxlength="80" placeholder="{{LexiqueGetString('first-name')}}" value="{{Model.fname}}">
+                                <span class="help-block m-b-none text-danger">{{modelErrors.fname_ope}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="lname_ope">{{LexiqueGetString('last-name')}}<code>*</code></label>
+                            <div class="col-lg-12">
+                                <input id="lname_ope" name="lname_ope" class="form-control b-r-sm" type="text" maxlength="80" placeholder="{{LexiqueGetString('last-name')}}*" value="{{Model.lname}}" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                <span class="help-block m-b-none text-danger">{{modelErrors.lname_ope}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <label class="col-lg-12 mb-10" for="email_ope">{{LexiqueGetString('e-mail')}}</label>
+                            <div class="col-lg-12">
+                                <input id="email_ope" name="email_ope" class="form-control b-r-sm" type="email" maxlength="80" placeholder="{{LexiqueGetString('e-mail')}}" value="{{Model.email}}">
+                                <span class="help-block m-b-none text-danger">{{modelErrors.email_ope}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <hr class="hr-line-dashed">
+                        </div>
+                        <div class="col-lg-12"><label class="text-right m-l-lg"><code>*</code> <small>{{LexiqueGetString('required-fields')}}</small></label></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-12 mb-20">
+                            {{goBack('operator.read')}}
+                        </div>
+                        <div class="col-lg-6 col-lg-12">
+                            <button type="submit" id="sendComplaint" class="btn btn-md btn-primary g-bg-primary-opacity-0_8--hover g-mr-10 pull-right">
+                                {{LexiqueGetString('save')}}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/validate/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#update_operator').validate({
+            rules: {
+                login_ope: {
+                    required: true,
+                    maxlength: 80
+                },
+                profile_ope: {
+                    required: true
+                },
+                fname_ope: {
+                    maxlength: 80
+                },
+                lname_ope: {
+                    required: true,
+                    maxlength: 80
+                },
+                email_ope: {
+                    maxlength: 80,
+                    email: true
+                },
+                entrep_ope: {
+                    required: true
+                }
+            },
+            messages: {
+                login_ope: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                    maxlength: jQuery.validator.format("{{LexiqueGetString('this-field-accept-maximum')}}")
+                },
+                profile_ope: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}"
+                },
+                fname_ope: {
+                    maxlength: jQuery.validator.format("{{LexiqueGetString('this-field-accept-maximum')}}")
+                },
+                lname_ope: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                    maxlength: jQuery.validator.format("{{LexiqueGetString('this-field-accept-maximum')}}")
+                },
+                email_ope: {
+                    maxlength: jQuery.validator.format("{{LexiqueGetString('this-field-accept-maximum')}}"),
+                    email: jQuery.validator.format("{{LexiqueGetString('invalid-e-mail-address')}}")
+                },
+                entrep_ope: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}"
+                }
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

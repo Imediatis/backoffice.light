@@ -1,0 +1,101 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<style></style>
+{% endblock styles %} {% block content %}
+<div class="row">
+    <div class="col-lg-offset-2 col-lg-7">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-user m-r-sm"></i>{{LexiqueGetString('new-region')}}</h5>
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal" action="{{path_for('region.pcreate')}}" method="post" name="new_region" id="new_region" enctype="multipart/form-data">
+                    {{ getCsrfInput() }}
+                    <input type="hidden" name="tb_rg_id" id="tb_rg_id" value="{{Model.id}}">
+
+                    <div class="form-group">
+                        {{flashMsg()}}
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="tb_rg_country">{{LexiqueGetString('country')}}<code>*</code></label>
+                            <div class="col-lg-12">
+                                <select id="tb_rg_country" name="tb_rg_country" class="form-control b-r-sm" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                    {{countries|raw}}
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.tb_rg_country}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label for="tb_rg_code" class="col-lg-12 m-b-10">{{LexiqueGetString('code')}}<code>*</code></label>
+                            <div class="col-lg-12">
+                                <input id="tb_rg_code" name="tb_rg_code" class="form-control b-r-sm" type="text" maxlength="20" placeholder="{{LexiqueGetString('code')}}*" value="{{Model.code}}" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                <span class="help-block m-b-none text-danger">{{modelErrors.tb_rg_code}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 form-label m-b-10" for="tb_rg_label">{{LexiqueGetString('label')}}</label>
+                            <div class="col-lg-12">
+                                <input id="tb_rg_label" name="tb_rg_label" class="form-control b-r-sm" type="text" maxlength="128" placeholder="{{LexiqueGetString('label')}}" value="{{Model.label}}">
+                                <span class="help-block m-b-none text-danger">{{modelErrors.tb_rg_label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <hr class="hr-line-dashed">
+                        </div>
+                        <div class="col-lg-12"><label class="text-right m-l-lg"><code>*</code> <small>{{LexiqueGetString('required-fields')}}</small></label></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-12 mb-20">
+                            {{goBack('region.read')}}
+                        </div>
+                        <div class="col-lg-6 col-lg-12">
+                            <button type="submit" id="sendComplaint" class="btn btn-md btn-primary g-bg-primary-opacity-0_8--hover g-mr-10 pull-right">
+                                {{LexiqueGetString('save')}}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/validate/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('#new_region').validate({
+            rules: {
+                tb_rg_country: {
+                    required: true
+                },
+                tb_rg_code: {
+                    required: true,
+                    maxlength: 20
+                },
+                tb_rg_label: {
+                    maxlength: 128
+                }
+            },
+            messages: {
+                tb_rg_country: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                },
+                tb_rg_code: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                    maxlength: jQuery.validator.format("{{LexiqueGetString('this-field-accept-maximum')}}")
+                },
+                tb_rg_label: {
+                    maxlength: jQuery.validator.format("{{LexiqueGetString('this-field-accept-maximum')}}")
+                }
+            }
+
+        })
+    });
+</script>
+{% endblock scripts %}

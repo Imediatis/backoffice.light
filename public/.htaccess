@@ -1,0 +1,7 @@
+RewriteEngine on
+#php_value session.cookie_httponly 1
+#php_value session.use_strict_mode 1
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]

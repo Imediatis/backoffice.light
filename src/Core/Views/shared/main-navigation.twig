@@ -1,0 +1,33 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                        <img alt="avatar" class="img-circle g-width-100" src="{{base_url()}}/img/avatars/{{User.avatar}}" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{User.login}}
+                                </strong>
+                            </span> <span class="text-muted text-xs block">{{User.function}}<b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="{{path_for('user.profile',{'login':User.login|base64_encode})}}">{{LexiqueGetString('profile')}}</a></li>
+                        <li><a href="{{path_for('user.changepwd',{'login':User.login|base64_encode})}}">{{LexiqueGetString('change-password')}}</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <form action="{{path_for('logout')}}" method="POST">
+                                {{ getCsrfInput() }}
+                                <button class="btn btn-link" type="submit" style="padding-top:0;"><i class="fa fa-sign-out"></i>{{LexiqueGetString('log-out')}} </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    LG+
+                </div>
+            </li>
+            {{buildMenu()}}
+        </ul>
+    </div>
+</nav>

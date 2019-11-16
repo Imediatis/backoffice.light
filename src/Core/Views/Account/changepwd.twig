@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:locale" content="{{CUR_LANG}}_{{CUR_LANG|upper}}" />
+    <meta property="og:type" content="WebApp" />
+    <meta property="og:title" content="Light Money web app" />
+    <meta property="og:description" content="Light, votre solution ultime pour l'administration de votre site web." />
+    <meta property="og:url" content="https://www.imediatis.net/" />
+    <meta property="og:site_name" content="La Solution d'échange financière" />
+    <meta property="og:image" content="{{ base_url() }}/ico/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if logginSucces %}
+    <meta http-equiv="refresh" content="3;url={{path_for('home')}}" /> {% endif %}
+    <link rel="shortcut icon" href="{{ base_url() }}/ico/{{Reseller.icon}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="{{ base_url() }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ base_url() }}/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/plugins/textSpinners/spinners.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/animate.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/style.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/ime.master.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/alertifyjs/alertify.min.css" rel="stylesheet">
+    <link href="{{ base_url() }}/css/alertifyjs/themes/default.min.css" rel="stylesheet">
+    <title>{{appEnv.appName}}|{{title}} </title>
+
+</head>
+
+<body class="black-bg">
+
+    <div class="middle-box text-left loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">LG+</h1>
+
+            </div>
+            <h3>{{LexiqueGetString('welcome-to')}} {{appEnv.appName}}+</h3>
+            <p>{{LexiqueGetString('change-your-password')}}</p>
+            {{flashMsg()}}
+            <form class="m-t" role="form" action="{{path_for('account.pchangepwd')}}" method="POST" id="changePwdForm">
+                {{ getCsrfInput() }}
+
+                <div class="form-group {% if modelErrors.email %}has-error{% endif %}">
+                    <input type="tb_usr_login" readonly name="tb_usr_login" class="form-control" placeholder="{{LexiqueGetString('user-name')}}" required value="{{Model.login}}" autocomplete="off">
+                    <span class="help-block">{{modelErrors.tb_usr_login}}</span>
+                </div>
+                <div class="form-group {% if modelErrors.tb_usr_curentPwd %}has-error{% endif %}">
+                    <input type="password" name="tb_usr_curentPwd" class="form-control" placeholder="{{LexiqueGetString('current-password')}}" required value="{{Model.currentPwd}}" minlength="8" autocomplete="off">
+                    <span class="help-block">{{modelErrors.tb_usr_curentPwd}}</span>
+                </div>
+                <div class="form-group {% if modelErrors.tb_usr_newPwd %}has-error{% endif %}" id="npwd-container">
+                    <input type="password" name="tb_usr_newPwd" class="form-control npwd" placeholder="{{LexiqueGetString('new-password')}}" required value="{{Model.newPwd}}" minlength="8" autocomplete="off">
+                    <span class="help-block">{{modelErrors.tb_usr_newPwd}}</span>
+                </div>
+                <div class="form-group {% if modelErrors.tb_usr_confirmNewPwd %}has-error{% endif %}">
+                    <input type="password" name="tb_usr_confirmNewPwd" class="form-control" placeholder="{{LexiqueGetString('confirm')}}" required value="{{Model.confNewPwd}}" minlength="8" autocomplete="off">
+                    <span class="help-block">{{modelErrors.tb_usr_confirmNewPwd}}</span>
+                </div>
+                <button type="submit" class="btn btn-primary block
+                        full-width m-b">{{LexiqueGetString('login')}}</button>
+
+            </form>
+
+            <p class="m-t"> <small>{{appEnv.appName}}
+                    &copy;
+                    {{"now"|date("Y")}}</small>
+            </p>
+        </div>
+    </div>
+
+    <script src="{{ base_url() }}/js/jquery-3.1.1.min.js"></script>
+    <script src="{{ base_url() }}/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+    <script src="{{ base_url() }}/js/alertify.min.js"></script>
+    <script src="{{ base_url() }}/js/plugins/pwstrength/pwstrength-bootstrap.min.js"></script>
+    <script src="{{ base_url() }}/js/plugins/pwstrength/zxcvbn.js"></script>
+
+    <!-- Jquery Validate -->
+    <script src="{{ base_url() }}/js/plugins/validate/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var options1 = {};
+            options1.ui = {
+                container: "#npwd-container",
+                showVerdictsInsideProgressBar: true,
+                viewports: {
+                    progress: ".pwstrength_viewport_progress"
+                }
+            };
+            options1.common = {
+                debug: false,
+            };
+            $('.npwd').pwstrength(options1);
+            $('#changePwdForm').validate({
+                rules: {
+                    tb_usr_curentPwd: "required",
+                    tb_usr_newPwd: {
+                        required: true,
+                        minlength: 8
+                    },
+                    tb_usr_confirmNewPwd: {
+                        required: true,
+                        minlength: 8
+                    }
+                },
+                messages: {
+                    tb_usr_curentPwd: "{{LexiqueGetString('this-field-is-required')}}",
+                    tb_usr_newPwd: {
+                        required: "{{LexiqueGetString('this-field-is-required')}}",
+                        minlength: jQuery.validator.format("{{LexiqueGetString('password-must-be-at-least')}}")
+                    },
+                    tb_usr_confirmNewPwd: {
+                        required: "{{LexiqueGetString('this-field-is-required')}}",
+                        minlength: jQuery.validator.format("{{LexiqueGetString('password-must-be-at-least')}}")
+                    }
+                }
+
+            })
+        });
+    </script>
+</body>
+
+</html>

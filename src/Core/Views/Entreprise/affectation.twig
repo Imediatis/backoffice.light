@@ -1,0 +1,96 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %}
+{% block styles %}
+    <style></style>
+{% endblock styles %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-7">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-user m-r-sm"></i>
+                        {{LexiqueGetString('new-affectation')}}</h5>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" action="{{path_for('affectation.pcreate')}}" method="post" name="new_affectation" id="new_affectation" enctype="multipart/form-data">
+
+                        {{ getCsrfInput() }}
+
+                        <div class="form-group">
+                            {{flashMsg()}}
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6">
+                                <label class="col-lg-12 mb-10" for="ld_aff_ent_id">{{LexiqueGetString('enterprise')}}<code>*</code>
+                                </label>
+                                <div class="col-lg-12">
+                                    <select id="ld_aff_ent_id" name="ld_aff_ent_id" class="form-control b-r-sm" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                        {{entreprises|raw}}
+                                    </select>
+                                    <span class="help-block m-b-none text-danger">{{modelErrors.ld_aff_ent_id}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-12 mb-10" for="ld_aff_part_id">{{LexiqueGetString('partner')}}<code>*</code>
+                                </label>
+                                <div class="col-lg-12">
+                                    <select id="ld_aff_part_id" name="ld_aff_part_id" class="form-control b-r-sm" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                        {{partners|raw}}
+                                    </select>
+                                    <span class="help-block m-b-none text-danger">{{modelErrors.ld_aff_part_id}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12"><hr class="hr-line-dashed"></div>
+                            <div class="col-lg-12">
+                                <label class="text-right m-l-lg">
+                                    <code>*</code>
+                                    <small>{{LexiqueGetString('required-fields')}}</small>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6 col-lg-12 mb-20">
+                                {{goBack('affectation.read')}}
+                            </div>
+                            <div class="col-lg-6 col-lg-12">
+                                <button class="btn btn-md btn-primary g-bg-primary-opacity-0_8--hover g-mr-10 pull-right" id="sendComplaint" type="submit">
+                                    {{LexiqueGetString('save')}}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script src="{{ base_url() }}/js/plugins/validate/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#new_affectation').validate({
+                rules: {
+                    ld_aff_ent_id: {
+                        required: true
+                    },
+                    ld_aff_part_id: {
+                        required: true
+                    }
+                },
+                messages: {
+                    ld_aff_ent_id: {
+                        required: "{{LexiqueGetString('this-field-is-required')}}"
+                    },
+                    ld_aff_part_id: {
+
+                        required: "{{LexiqueGetString('this-field-is-required')}}"
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock scripts %}

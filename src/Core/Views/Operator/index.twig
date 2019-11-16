@@ -1,0 +1,176 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<style>
+    .action-user {
+        left: -110px !important;
+    }
+</style>
+{% endblock styles %} {% block content %}
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h5><i class="fa fa-users m-r-sm"></i>{{LexiqueGetString('operators')}}</h5>
+        <div class="ibox-tools">
+            <a href="{{path_for('operator.create')}}" class="btn btn-primary btn-quick"><i class="fa fa-plus m-r-xs"></i>{{LexiqueGetString('new')}}</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="operators">
+                <thead>
+                    <tr>
+                        <th class="text-middle no-sort"></th>
+                        <th class="no-sort"></th>
+                        <th>{{LexiqueGetString('names')}}</th>
+                        <th>{{LexiqueGetString('login-n')}} (<em>profile</em>)</th>
+                        <th>{{LexiqueGetString('enterprise')}}</th>
+                        <th>{{LexiqueGetString('teller')}}</th>
+                        <th>{{LexiqueGetString('last-login')}}</th>
+                        <th>{{LexiqueGetString('from')}}</th>
+                        <th class="no-sort"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script type="text/javascript">
+    function activateOperator(login, question) {
+        alertify.confirm('<h3>' + question + '</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('operator.activate')}}",
+                data: {
+                    login: login,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#operators').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    function logoutOperator(login) {
+        alertify.confirm('<h3>{{LexiqueGetString("would-you-logout-this-use")}}</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('operator.bologout')}}",
+                data: {
+                    login: login,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#operators').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    function resetOperatorpwd(login, msg) {
+        alertify.confirm(msg, function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('operator.resetpwd')}}",
+                data: {
+                    login: login,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#operators').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        var $table = $('#operators');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [2, "desc"]
+            ],
+            "columnDefs": [{
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "ajax": {
+                url: '{{path_for("operator.dt")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                },
+                complete: function(e, settings, json, xhr) {
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404:Page not found</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <style type="text/css">
+        body {
+            height: 100%;
+            font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #2f4050;
+            font-size: 13px;
+            color: #676a6c;
+            overflow-x: hidden;
+            line-height: 1.42857143;
+            margin: 0;
+        }
+
+        @-webkit-keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-20px);
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-20px);
+                -ms-transform: translateY(-20px);
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        .fadeInDown {
+            -webkit-animation-name: fadeInDown;
+            animation-name: fadeInDown;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        .middle-box {
+            max-width: 80%;
+            z-index: 100;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+
+        .error-desc {
+            background-color: antiquewhite;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .black-bg {
+            background-color: #262626;
+        }
+
+        .font-bold {
+            font-weight: 600;
+        }
+
+        h3 {
+            line-height: 1.1;
+            margin-bottom: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        h1 {
+            font-size: 170px;
+            font-weight: 100;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+    </style>
+</head>
+
+<body class="black-bg">
+
+
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>404</h1>
+        <h3 class="font-bold"> Page not found</h3>
+        <div class="error-desc">
+            Retour &agrave; la page d&apos;accueil <br /><a href="/" class="btn btn-primary m-t" style="margin:0 auto; display:block">Accueil</a>
+        </div>
+    </div>
+</body>
+
+</html>

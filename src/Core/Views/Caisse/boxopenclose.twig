@@ -1,0 +1,136 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<style></style>
+{% endblock styles %} {% block content %}
+<div class="row animated fadeInRight">
+    <div class="form-group">
+        {{flashMsg()}}
+    </div>
+    <div class="col-lg-5">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>{{LexiqueGetString('teller-s-details')}}</h5>
+            </div>
+            <div>
+                <div class="ibox-content no-padding border-left-right">
+                    <img alt="image" class="img-responsive" src="{{ base_url()}}/img/avatars/company.jpg">
+                </div>
+                <div class="ibox-content profile-content">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h4><a href="{{path_for('branch.details',{'code':Model.branch.code|base64_encode})}}"><strong>{{Model.branch.name}}</strong> ({{Model.branch.code}})</a></h4>
+                            </div>
+                            <div class="col-lg-2"><span class="label label-{{Model.branch.color}}">{{ LexiqueGetString(Model.branch.state)}}</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h4>{{LexiqueGetString('teller')}} <strong>{{Model.code}}</strong></h4>
+                            </div>
+                            <div class="col-lg-2"><span class="label label-{{Model.color}}">{{LexiqueGetString(Model.state)}}</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>{{LexiqueGetString('max-amount')}} : <span class="label label-success">{{Model.maxAmount|number_format(0,',',' ')}} FCFA</span></h4>
+                            </div>
+                        </div>
+                        <p>
+                            <i class="fa fa-map g-mr-15"></i>{{Model.branch.city}} <br>
+                            <i class="fa fa-map-marker g-mr-15"></i>{{Model.branch.address}} <br>
+                            <i class="fa fa-phone g-mr-15"></i><a href="tel:{{Model.branch.phone1}}">{{Model.branch.phone1}}</a>, <a href="tel:{{Model.branch.phone2}}">{{Model.branch.phone2}}</a> <br>
+                            <i class="fa fa-envelope g-mr-15"></i><a href="mailto:{{Model.branch.email}}">{{Model.branch.email}}</a> <br>
+                        </p>
+                        <div class="user-button">
+                            <form action="{{path_for('box.popenclose')}}" method="POST">
+                                {{ getCsrfInput() }}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{goBack('box.read')}}
+                                        <input type="hidden" name="action" value="{{labelAction}}">
+                                        <input type="hidden" name="code" value="{{Model.code}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-{{Model.rcolor}} btn-sm btn-block"><i class="fa fa-exchange"></i> {{LexiqueGetString(labelAction)}}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>{{LexiqueGetString('activities')}}</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive" style="padding-bottom:0">
+                    <table class="table table-striped table-hover table-condenced" id="activities">
+                        <thead>
+                            <tr>
+                                <th>{{LexiqueGetString('date')}}</th>
+                                <th>{{LexiqueGetString('action')}}</th>
+                                <th>{{LexiqueGetString('operator')}}</th>
+                                <th>{{LexiqueGetString('ip-address')}}</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $table = $('#activities');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [0, "desc"]
+            ],
+            "columnDefs": [{
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "ajax": {
+                url: '{{path_for("box.activities")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                    d.code = '{{Model.code|base64_encode}}';
+                },
+                complete: function(e, settings, json, xhr) {
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+    });
+</script>
+{% endblock scripts %}

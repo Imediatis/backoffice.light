@@ -1,0 +1,267 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/iCheck/custom.css" />
+<style>
+    .form-horizontal .radio {
+        top: 7px !important;
+    }
+    
+    .form-horizontal .radio {
+        padding-top: 0;
+        top: -5px;
+    }
+    
+    .table>tbody>tr>td {
+        padding: 5px;
+    }
+</style>
+{% endblock styles %} {% block content %}
+<div class="row">
+    <div class="col-lg-offset-2 col-lg-7">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-user m-r-sm"></i>{{LexiqueGetString('management-of-tariff-grid')}} {{LexiqueGetString('new-price')}}</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" action="{{path_for('tariffgrid.pcreate')}}" method="post" name="new_price" id="new_price" enctype="multipart/form-data">
+                            {{ getCsrfInput() }}
+                            <input type="hidden" name="tb_grt_id" id="tb_grt_id" value="{{Model.id}}">
+
+                            <div class="form-group">
+                                {{flashMsg()}}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label for="tb_ent_ref" class="col-lg-12 m-b-10">{{LexiqueGetString('company')}}<code>*</code></label>
+                                    <div class="col-lg-12">
+                                        <select name="ld_ent_id" id="ld_ent_id" class="form-control b-r-sm" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                            {{entreprises|raw}}
+                                        </select>
+                                        <span class="help-block m-b-none text-danger">{{modelErrors.ld_ent_id}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label for="tb_grt_min" class="col-lg-12 m-b-10">{{LexiqueGetString('min')}}<code>*</code></label>
+                                    <div class="col-lg-12">
+                                        <input id="tb_grt_min" name="tb_grt_min" class="form-control b-r-sm" type="number" min="1" placeholder="{{LexiqueGetString('min')}}*" value="{{Model.min}}" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                        <span class="help-block m-b-none text-danger">{{modelErrors.tb_grt_min}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="tb_grt_max" class="col-lg-12 m-b-10">{{LexiqueGetString('max')}}<code>*</code></label>
+                                    <div class="col-lg-12">
+                                        <input id="tb_grt_max" name="tb_grt_max" class="form-control b-r-sm" type="number" min="1" placeholder="{{LexiqueGetString('max')}}*" value="{{Model.max}}" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                        <span class="help-block m-b-none text-danger">{{modelErrors.tb_grt_max}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label for="tb_grt_value" class="col-lg-12 m-b-10">{{LexiqueGetString('value')}}</label>
+                                    <div class="col-lg-12">
+                                        <input id="tb_grt_value" name="tb_grt_value" class="form-control b-r-sm" type="number" step="0.01" min="1" placeholder="{{LexiqueGetString('value')}}" value="{{Model.value}}">
+                                        <span class="help-block m-b-none text-danger">{{modelErrors.tb_grt_value}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="col-lg-12 form-label m-b-10" for="">{{LexiqueGetString('nature')}}<code>*</code></label>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="radio radio-success i-checks">
+                                                    <input type="radio" name="tb_grt_nature" value="1" {% if Model.nature==1 %} checked {% endif %} />
+                                                    <label>{{LexiqueGetString('fixe')}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="radio radio-success i-checks">
+                                                    <input type="radio" name="tb_grt_nature" value="2" {% if Model.nature==2 %} checked {% endif %} />
+                                                    <label>{{LexiqueGetString('percentage')}} %</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <hr class="hr-line-dashed">
+                                </div>
+                                <div class="col-lg-12"><label class="text-right m-l-lg"><code>*</code> <small>{{LexiqueGetString('required-fields')}}</small></label></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6 col-lg-12 mb-20">
+                                    {{goBack('tariffgrid.read')}}
+                                </div>
+                                <div class="col-lg-6 col-lg-12">
+                                    <button type="submit" id="saveTariff" class="btn btn-md btn-primary g-bg-primary-opacity-0_8--hover g-mr-10 pull-right">
+                                        {{LexiqueGetString('save')}}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover" id="tariffgrids">
+                                <caption>Grille de l'entreprise sélectionné</caption>
+                                <thead>
+                                    <tr>
+                                        <th>{{LexiqueGetString('min')}}</th>
+                                        <th>{{LexiqueGetString('max')}}</th>
+                                        <th>{{LexiqueGetString('value')}}</th>
+                                        <th class="no-sort"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script src="{{ base_url() }}/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="{{ base_url() }}/js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    function deleteTariffGrid(id) {
+        alertify.confirm('<h3>{{LexiqueGetString("would-you-delete-this-ite")}}</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('tariffgrid.delete')}}",
+                data: {
+                    id: id,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#tariffgrids').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $('.i-checks').iCheck({
+            radioClass: 'iradio_square-green'
+        });
+
+        jQuery.validator.addMethod("greaterT", function(value, element, params) {
+            if ($(params[0]).val() != '' && value != '') {
+                if (!/Invalid|NaN/.test(new Date(value))) {
+                    return new Date(value) > new Date($(params[0]).val());
+                }
+                return isNaN(value) && isNaN($(params[0]).val()) || (Number(value) > Number($(params[0]).val()));
+            }
+            return true;
+        }, jQuery.validator.format('Cette valeur dois être supérieur à {1}.'));
+
+        $('#new_price').validate({
+            rules: {
+                ld_ent_id: {
+                    required: true
+                },
+                tb_grt_min: {
+                    required: true,
+                    min: 1
+                },
+                tb_grt_max: {
+                    required: true,
+                    min: 1,
+                    greaterT: ['#tb_grt_min', 'Min']
+                },
+                tb_grt_value: {
+                    min: 1,
+                    required: true
+                }
+            },
+            messages: {
+                ld_ent_id: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}"
+                },
+                tb_grt_min: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                    min: "{{LexiqueGetString('the-minimum-value-for-thi')}}"
+                },
+                tb_grt_max: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                    min: "{{LexiqueGetString('the-minimum-value-for-thi')}}"
+                },
+                tb_grt_value: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}",
+                    min: "{{LexiqueGetString('the-minimum-value-for-thi')}}"
+                }
+            }
+        });
+
+        var $table = $('#tariffgrids');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [0, "asc"]
+            ],
+            "columnDefs": [{
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "displayLength": 25,
+            "ajax": {
+                url: '{{path_for("tariffgrid.dt_ent")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                    d.entId = $('#ld_ent_id').val();
+                },
+                complete: function(e, settings, json, xhr) {
+                    $("#tariffgrids tr td").addClass("text-right");
+                    $("#tariffgrids tr td:last-child").removeClass("text-right");
+                    $("#tariffgrids tr td:last-child").addClass("text-center");
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+        $("#ld_ent_id").change(function() {
+            $('#tariffgrids').DataTable().ajax.reload();
+        });
+        $('#ld_ent_id').change();
+    });
+</script>
+{% endblock scripts %}

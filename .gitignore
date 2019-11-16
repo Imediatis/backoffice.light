@@ -1,0 +1,9 @@
+*.zip
+.vscode/
+composer.lock
+sql/
+vendor/
+*.sql
+*.log
+run.bat
+TODO.php

@@ -1,0 +1,236 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/iCheck/custom.css" />
+<style>
+    .form-horizontal .radio {
+        padding-top: 0;
+        top: -5px;
+    }
+    
+    .table>tbody>tr>td {
+        padding: 5px;
+    }
+</style>
+{% endblock styles %} {% block content %}
+<div class="row">
+    <div class="col-lg-offset-2 col-lg-8">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-user m-r-sm"></i>{{LexiqueGetString('operator-assignment')}}</h5>
+            </div>
+            <div class="ibox-content">
+                <form action="" class="form-horizontal">
+
+                    <div class="form-group">
+                        {{flashMsg()}}
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="LD_entreprise">{{LexiqueGetString('enterprise')}}</label>
+                            <div class="col-lg-12">
+                                <select id="LD_entreprise" name="LD_entreprise" class="form-control b-r-sm">
+                                    {{entreprises|raw}}
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.LD_entreprise}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="LD_agence">{{LexiqueGetString('branch')}}</label>
+                            <div class="col-lg-12">
+                                <select id="LD_agence" name="LD_agence" class="form-control b-r-sm">
+                                    {{branches|raw}}
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.LD_agence}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="col-lg-12 mb-10" for="LD_caisse">{{LexiqueGetString('teller')}}<code>*</code></label>
+                            <div class="col-lg-12">
+                                <select id="LD_caisse" name="LD_caisse" class="form-control b-r-sm" required data-msg-required="{{LexiqueGetString('required-fields')}}">
+                                    {{boxes|raw}}
+                                </select>
+                                <span class="help-block m-b-none text-danger">{{modelErrors.LD_caisse}}</span>
+                                <input type="hidden" name="id_operator" id="id_operator" data-opename="" data-opelogin="">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content" style="padding-bottom:0">
+                        <div class="table-responsive" style="padding-bottom:0">
+                            <table class="table table-striped table-hover table-condenced" id="operators">
+                                <thead>
+                                    <tr>
+                                        <th class="no-sort"></th>
+                                        <th>{{LexiqueGetString('names')}}</th>
+                                        <th>{{LexiqueGetString('login-n')}}</th>
+                                        <th>{{LexiqueGetString('profile')}}</th>
+                                        <th>{{LexiqueGetString('teller')}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <hr class="hr-line-dashed">
+                        </div>
+                        <div class="col-lg-12"><label class="text-right m-l-lg"><code>*</code> <small>{{LexiqueGetString('required-fields')}}</small></label></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-12 mb-20">
+                            {{goBack('operator.read')}}
+                        </div>
+                        <div class="col-lg-6 col-lg-12">
+                            <button type="button" id="sendComplaint" class="btn btn-md btn-primary g-bg-primary-opacity-0_8--hover pull-right">
+                                {{LexiqueGetString('associate')}}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script src="{{ base_url() }}/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="{{ base_url() }}/js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    function radioIcheck() {
+        $('.i-checks').iCheck({
+            radioClass: 'iradio_square-green'
+        });
+        $('input[type="radio"]').on('ifChecked', function(event) {
+            var item = $(event.target)
+            $('#id_operator').val(item.val());
+            $('#id_operator').data('opename', item.data('opename'));
+            $('#id_operator').data('opelogin', item.data('opelogin'));
+        });
+    }
+
+    function setOperatorBox() {
+        var format = '{{LexiqueGetString("would-you-assign-the-oper")}}';
+        var entreprise = '<strong>' + $('#LD_entreprise option:selected').text() + '</strong> ';
+        var agence = '<strong>' + $('#LD_agence option:selected').text() + '</strong><br/>';
+        var caisse = '<strong>' + $('#LD_caisse option:selected').text() + '</strong><br/>';
+        var idcaisse = $('#LD_caisse').val();
+
+        var operator = '<strong>' + $('#id_operator').data('opename') + ' (' + $('#id_operator').data('opelogin') + ')' + '</strong><br/>';
+        var idoperator = $('#id_operator').val();
+
+        var msg = String.format(format, operator, caisse, agence, entreprise);
+
+        if (idcaisse && idoperator) {
+            alertify.confirm(msg, function() {
+                $.ajax({
+                    type: "POST",
+                    url: "{{path_for('aoperator.psetoperator')}}",
+                    data: {
+                        idCaisse: idcaisse,
+                        idOperator: idoperator,
+                        __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                        if (response.isSuccess) {
+                            alertify.success(response.message);
+                            $('#operators').DataTable().ajax.reload(null, false);
+                        } else {
+                            alertify.error(response.message);
+                        }
+                    },
+                    error: function(jq, status, error) {
+                        alertify.error(error);
+                    }
+                });
+            }).setting({
+                'title': '{{ title }}',
+                'labels': {
+                    ok: '{{LexiqueGetString("yes")}}',
+                    cancel: '{{LexiqueGetString("cancel")}}'
+                }
+            });
+        } else {
+            alertify.error('{{LexiqueGetString("please-select-the-caisse-")}}');
+        }
+    }
+
+    $(document).ready(function() {
+
+        $('#new_operator').validate({
+            rules: {
+                LD_caisse: {
+                    required: true
+                }
+            },
+            messages: {
+                LD_caisse: {
+                    required: "{{LexiqueGetString('this-field-is-required')}}"
+                }
+            }
+        });
+
+        $('#sendComplaint').click(function() {
+            setOperatorBox();
+        });
+
+        var $table = $('#operators');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [2, "desc"]
+            ],
+            "columnDefs": [{
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "ajax": {
+                url: '{{path_for("operator.lentoperator")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                    d.entrep = $('#LD_entreprise').val();
+                },
+                complete: function(e, settings, json, xhr) {
+                    radioIcheck();
+                    $("#operators tr td:first-child").addClass("text-center");
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+
+        $('#LD_agence').change(function() {
+            LocationChange("{{path_for('branch.ddchg')}}", $(this).val(), 'LD_caisse', 2);
+        });
+
+        $('#LD_entreprise').change(function() {
+            LocationChange("{{path_for('entreprise.ddchg')}}", $(this).val(), 'LD_agence');
+            $('#LD_agence').change();
+            $('#operators').DataTable().ajax.reload(null, false);
+        });
+
+
+    });
+</script>
+{% endblock scripts %}

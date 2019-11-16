@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /bootstrap
+Disallow: /logs
+Disallow: /public
+Disallow: /repository
+Disallow: /src
+Disallow: /tmp
+Disallow: /vendor

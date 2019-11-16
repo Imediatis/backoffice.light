@@ -1,0 +1,150 @@
+{% extends session.coreShareViewsF ~ "layout.twig" %} {% block styles %}
+<link rel="stylesheet" href="{{ base_url() }}/css/plugins/dataTables/datatables.min.css" />
+<style>
+    .action-agence {
+        top: -85px !important;
+        left: -90px !important;
+    }
+    
+    .table-responsive {
+        padding-bottom: 50px;
+    }
+    
+    .btn-circle {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 9px !important;
+    }
+</style>
+{% endblock styles %} {% block content %}
+<div class="ibox">
+    <div class="ibox-title">
+        <h5><i class="fa fa-sitemap m-r-sm"></i>{{LexiqueGetString('tellers')}}</h5>
+        <div class="ibox-tools"> </div>
+    </div>
+    <div class="ibox-content">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="boxes">
+                <thead>
+                    <tr>
+                        <th class="no-sort"></th>
+                        <th class="no-sort"></th>
+                        <th>{{LexiqueGetString('date')}}</th>
+                        <th>{{LexiqueGetString('enterprise')}}</th>
+                        <th>{{LexiqueGetString('branch-code')}}</th>
+                        <th>{{LexiqueGetString('code')}}</th>
+                        <th>{{LexiqueGetString('key')}}</th>
+                        <th class="no-sort"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block scripts %}
+<script src="{{ base_url() }}/js/plugins/dataTables/datatables.min.js"></script>
+<script type="text/javascript">
+    function deleteBox(code, msg) {
+        alertify.confirm('<h3>' + msg + '</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('box.delete')}}",
+                data: {
+                    code: code,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#boxes').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    function regkBox(code) {
+        alertify.confirm('<h3>{{LexiqueGetString("would-you-reset-the-key-o")}}</h3>', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{path_for('box.keygen')}}",
+                data: {
+                    code: code,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('input[name="__RequestVerificationToken"]').val(response.__RequestVerificationToken);
+                    if (response.isSuccess) {
+                        alertify.success(response.message);
+                        $('#boxes').DataTable().ajax.reload(null, false);
+                    } else {
+                        alertify.error(response.message);
+                    }
+                },
+                error: function(jq, status, error) {
+                    alertify.error(error);
+                }
+            });
+        }).setting({
+            'title': '{{ title }}',
+            'labels': {
+                ok: '{{LexiqueGetString("yes")}}',
+                cancel: '{{LexiqueGetString("cancel")}}'
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        var $table = $('#boxes');
+        var dataTable = $table.DataTable({
+            "language": dtLanguage,
+            "responsive": true,
+            "processing": false,
+            "serverSide": true,
+            "order": [
+                [5, "asc"]
+            ],
+            "columnDefs": [{
+                targets: 'no-sort',
+                orderable: false
+            }],
+            "ajax": {
+                url: '{{path_for("box.dt")}}',
+                type: "post",
+                "data": function(d) {
+                    d.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+                },
+                complete: function(e, settings, json, xhr) {
+                    $table.tooltip({
+                        selector: "[data-toggle=tooltip]",
+                        container: "body"
+                    });
+                    if (e.hasOwnProperty('responseJSON')) {
+                        if (e.responseJSON.hasOwnProperty('__RequestVerificationToken')) {
+                            $('input[name="__RequestVerificationToken"]').val(e.responseJSON.__RequestVerificationToken)
+                        }
+                    }
+                },
+                error: function() {}
+            }
+        });
+    });
+</script>
+{% endblock scripts %}
